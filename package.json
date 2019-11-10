@@ -1,0 +1,33 @@
+{
+  "name": "teamwork",
+  "version": "1.0.0",
+  "description": "An internal social network for employees of an organization.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint",
+    "test": "mocha",
+    "coverage": "npm run pretest && jest --coverage && cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakeyehp/Teamwork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakeyehp/Teamwork/issues"
+  },
+  "homepage": "https://github.com/sakeyehp/Teamwork#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "mocha": "^6.2.2"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}

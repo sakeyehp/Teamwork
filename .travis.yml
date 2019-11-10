@@ -1,0 +1,7 @@
+
+  script: "make test-coveralls",
+  install: "npm install",
+  node_js: 
+    "stable"
+  ,
+  language: "node_js"
