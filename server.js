@@ -1,31 +1,14 @@
-import express from 'express';
-import dotenv from 'dotenv';
-// const bodyParser = require('body-parser');
-import 'babel-polyfill';
-import Gifs from './src/controllers/gifs';
+const http = require('http');
+const app = require('./app');
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}));
-
-dotenv.config();
-
-const app = express()
-
-app.use(express.json())
-
-app.get('/', (req,res) => {
-    return res.status(200).send({'message': 'Welcome to the TeamWork App'});
-})
-
-app.post('/api/v1/gifs', Gifs.create);
-app.get('/api/v1/gifs', Gifs.getAll);
-app.get('/api/v1/gifs/:id', Gifs.getOne);
-app.put('/api/v1/gifs/:id', Gifs.update);
-app.delete('/api/v1/gifs/:id', Gifs.delete);
-
-app.listen(3000)
-
-console.log('app running on port ', 3000);
+const server = http.createServer(app);
+const port = parseInt(process.env.PORT) || 3000;
+app.set('port', port);
 
 
-export default app;
+server.listen(port, () => {
+// eslint-disable-next-line no-console
+  console.log(`server running on port ${port}`);
+});
+
+module.exports = server;
