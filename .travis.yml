@@ -1,7 +1,23 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - "node_modules"
+install:
+  - npm install
+services:
+  - postgresql
 
-  script: "make test-coveralls",
-  install: "npm install",
-  node_js: 
-    "stable"
-  ,
-  language: "node_js"
+env:
+  global:
+  - NODE_ENV=test
+
+before_script:
+  - psql -c 'create database employee_db' -U postgres
+  - psql -c "CREATE USER postgres WITH PASSWORD connect;" -U postgres
+  - npm run create
+script:
+  - npm test
+after_success:
+  - npm run coverage
